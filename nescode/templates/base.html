@@ -1,0 +1,91 @@
+{% load cms_tags staticfiles sekizai_tags menu_tags %}
+<html>
+  <head>
+    <title>{% block title %}This is my new project home page{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% render_block "css" %}
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+    <link rel="shortcut icon" href="{% static '/static/image/favicon.ico' %}" />
+  </head>
+  <body>
+    {% cms_toolbar %}
+      <nav class="navbar navbar-default navbar-top">
+          <div class="container-fluid">
+            <div class="navbar-header ">
+              <button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#navbar"
+                      aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              {% if user.is_authenticated %}
+                        <a class="navbar-brand ellipsis" href="/">
+                        <span><img src="https://acoidea.frappecloud.com/files/nescode.png" alt="NESCODE"/></span>
+                    </a>
+                         {% else %}
+                             <a class="navbar-brand ellipsis" href="/">
+                        <span><img src="https://acoidea.frappecloud.com/files/nescode.png" alt="NESCODE"/></span>
+                    </a>
+                        {% endif %}
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+
+                        <ul class="nav navbar-nav navbar-right">
+                            {% if user.is_authenticated %}
+                        <li class="dropdown logged-in" id="website-post-login"
+                            data-label="website-post-login" style="">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img class="user-picture" style="min-width: 20px; max-height: 25px; border-radius: 10px"
+                                     src="https://secure.gravatar.com/avatar">
+                                     {{ user.username }}<b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu"><li data-label="User"></li>
+                                <li data-label="Logout"><a href="/home"
+                                            rel="nofollow"><i class="glyphicon glyphicon-dashboard"></i> Dashboard
+                                        </a></li>
+                                <li data-label="Update password"><a href = "/update-password"
+                                            rel="nofollow"><i class="glyphicon glyphicon-log-in"></i> Reset Password
+                                        </a></li>
+
+                                <li data-label="Logout">
+                                    <a href="/logout"rel="nofollow"><i class="glyphicon glyphicon-lock"></i> Logout
+                                    </a></li>
+                            </ul>
+                        </li>
+                            {% else %}
+                             <li class="btn-login-area"><a href="/login">SignUp/Login</a></li>
+                                        {% endif %}
+
+                    </ul>
+            <ul class="nav navbar-nav navbar-right">
+                 {% show_menu 0 1 100 100 "menu.html" %}
+                            <li><a href="#">File</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Help <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+
+                                    <li><a href="#"><i class="fa fa-building"></i>About</a></li>
+                                    <li><a href="#"><i class="fa fa-file-pdf-o"></i>Documentation</a></li>
+                                    <li><a href="#"><i class="fa fa-rocket"></i>Report an issue</a></li>
+                                    <li><a href="#"><i class="fa fa-envelope"></i>Email us</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+            </div>
+          </div>
+        </nav>
+<div class="container">
+  {% block content %}
+
+
+  {% endblock content %}
+</div>
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        {% render_block "js" %}
+  </body>
+</html>
+

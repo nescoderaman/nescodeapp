@@ -1,0 +1,32 @@
+{% extends "base1.html" %}
+{% load staticfiles %}
+{% block offer %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!--container start here-->
+<div class="container">
+    <div class="col-md-10">
+        <!--panel start here-->
+		<div class="panel panel-default">
+            <div class="panel-heading"><span class="glyphicon glyphicon-user"></span> Are you sure to delete this
+                employee
+            </div>
+
+                        <div class="panel-body">
+                            <!-- panel body start here -->
+                            <div class="col-sm-6">
+                                <h4>Delete Employee  {{ offer1 }}  ?</h4>
+                                        <form action="{% url "employee-delete" pk=offer1.id %}" method="POST">
+                                          {% csrf_token %}
+                                          <input type="submit" class="btn btn-danger btn-xs" value="Yes, delete." />
+                                          <a class="btn btn-default btn-xs" href=
+                                                  "{% url "hr_module" %}">No, cancel.</a>
+                                        </form>
+                            </div>
+                            <!-- panel body end here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!--container end here-->
+    <!--Java script calling tag  -->
+{% endblock %}

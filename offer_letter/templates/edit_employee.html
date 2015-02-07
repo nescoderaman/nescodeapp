@@ -1,0 +1,189 @@
+{% extends "base1.html" %}
+{% load staticfiles %}
+{% block offer %}
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<form action="{{ action }}" method="POST" role="form">{% csrf_token %}
+<div class="container">
+    <div class="col-md-10">
+		<div class="panel panel-default">
+            <div class="panel-heading"><span class="glyphicon glyphicon-user"></span> Add Employee
+
+            </div>
+            <div class="well well-sm">
+                <button type="submit" class="btn btn-default btn-xs" id="save_contact" >Save</button>
+                <a href="/list" class="btn btn-default btn-xs">Back</a>
+            </div>
+
+
+					<div class="panel-body">
+                            <!-- employee informations -->
+                            <div class="col-sm-6">
+                                <!-- employee information first row Start-->
+                                <div class="panel-body form-horizontal">
+
+
+                                    <div class="form-group">
+                                            <label for="id_salutation" class="col-sm-4 control-label">Salutation</label>
+                                            <div class="col-sm-6">
+                                                <div class="dropdown">
+                                                     <select id="id_salutation" name="salutation"
+                                                             class="form-control">
+                                                         {% if offer1.id %}
+                                                    <option>{{ offer1.salutation }}</option>
+                                                    <option value="Mr">Mr</option>
+                                                    <option value="Mrs">Mrs</option>
+                                                         {% else %}
+                                                     <option value="">Select</option>
+                                                    <option value="Mr">Mr</option>
+                                                    <option value="Mrs">Mrs</option>
+                                                         {% endif %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <div class="form-group">
+                                           <label for="id_name" class="col-sm-4 control-label" >Name </label>
+                                            <div class="col-sm-8">
+                                                <input  class="form-control" id="id_name" max_length="30"
+                                                               name="name" required="True" type="text" value="{{ offer1.name }}" />
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="id_empid" class="col-sm-4 control-label">Employee Id </label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control"id="id_empid" max_length="30" name="empid" required="True"
+                                                          type="text" value="{{ offer1.empid }}" />
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="id_doj" class="col-sm-4 control-label">Date Of Joining </label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control"id="id_doj" max_length="30" name="doj" required="True"
+                                                            type="text" value="{{ offer1.doj }}"
+                                                            placeholder="YY-MM-DD" />
+                                                                                                    <script type="text/javascript">
+                                                                                                     $(function() {
+                                                                                                         $("#id_doj").datepicker({ dateFormat: "yy-mm-dd" }).val()
+                                                                                                     })</script>
+
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="id_designation" class="col-sm-4 control-label">Designation
+                                           </label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control"id="id_designation" max_length="30" name="designation"
+                                                                required="True" type="text" value="{{ offer1.designation }}" />
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="id_company" class="col-sm-4 control-label">Company </label>
+                                            <div class="col-sm-8">
+                                                <input id="id_company" class="form-control"max_length="30" name="company" required="True"
+                                                        type="text" value="{{ offer1.company }}" />
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="id_supervisername" class="col-sm-4 control-label">Superviser
+                                               Name </label>
+                                            <div class="col-sm-8">
+                                                <input id="id_supervisername"class="form-control" max_length="30"
+                                                                       name="supervisername" required="True" type="text"
+                                                                       value="{{ offer1.supervisername }}" />
+                                            </div>
+                                    </div>
+                                </div>
+
+                                                    </div>
+                                            {% if form.errors %}
+                             <div style="text-align: center">
+                             <p>Error :- Please Select Location.</p>
+                         {% endif %}
+                            <!-- employee information first row End-->
+
+                            <!--employee information row second Row Start-->
+
+                            <div class="col-sm-6">
+                                <div class="panel-body form-horizontal">
+                                    <div class="form-group">
+                                           <label for="id_ctc" class="col-sm-4 control-label">CTC </label>
+                                            <div class="col-sm-8">
+                                                <input id="id_ctc" max_length="30" name="ctc" required="True" class="form-control"type="text"
+                                            value="{{ offer1.ctc }}" />
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="id_location" class="col-sm-4 control-label">Location</label>
+                                            <div class="col-sm-6">
+                                                <select id="id_location" name="location" class="form-control">
+                                                    {% if offer1.id %}
+                                                    <option>{{ offer1.location }}</option>
+                                                    <option value="Bangalore">Bangalore</option>
+                                                    <option value="New Delhi">New Delhi</option>
+                                                         {% else %}
+                                                <option value="{{ offer1.location }}">Select</option>
+                                                <option value="Bangalore" >Bangalore</option>
+                                                <option value="New Delhi">New Delhi</option>
+                                                    {% endif %}
+                                                </select>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="id_traning_duration"class="col-sm-4 control-label">Traning
+                                               Duration </label>
+                                            <div class="col-sm-8">
+                                                <input id="id_traning_duration" max_length="30"
+                                                                      name="traning_duration" required="True"class="form-control"
+                                                                      type="text" value="{{ offer1.traning_duration }}" />
+
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="id_leave"class="col-sm-4 control-label">Leave </label>
+                                            <div class="col-sm-8">
+                                               <input id="id_leave" max_length="30" name="leave" required="True"
+                                                type="text" value="{{ offer1.leave }}" class="form-control"/>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="id_add1"class="col-sm-4 control-label">Address Line 1 </label>
+                                            <div class="col-sm-8">
+                                                <input id="id_add1" max_length="30" name="add1" required="True"
+                                                        type="text" value="{{ offer1.add1 }}" class="form-control"/>
+
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="id_add2" class="col-sm-4 control-label">Address Line 2 </label>
+                                            <div class="col-sm-8">
+                                                <input id="id_add2" max_length="30" name="add2" required="True"
+                                                        type="text" value="{{ offer1.add2 }}" class="form-control"/>
+
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="id_add3"class="col-sm-4 control-label">Address Line 3 </label>
+                                            <div class="col-sm-8">
+                                                 <input id="id_add3" max_length="30" name="add3" required="True"
+                                                        type="text" value="{{ offer1.add3 }}" class="form-control"/>
+
+                                            </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+				</div>
+        </div>
+    </div>
+</div>
+</form>
+     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+ <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'nescode.js' %}"></script>
+{% endblock %}

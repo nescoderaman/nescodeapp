@@ -1,0 +1,42 @@
+{% extends "base1.html" %}
+{% load staticfiles %}
+{% block offer %}
+<script src="{% static 'nescode.js' %}"></script>
+     <link href="{% static 'nescode.css' %}" rel="stylesheet" media="screen">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+     <script src="{% static 'dist/js/myjs.js' %}"></script>
+     <script src="../../static/dist/js/npm.js"></script>
+    <script src="../../static/dist/js/bootstrap.js"></script>
+<script src="{% static 'dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'nescode.js' %}"></script>
+     <!-- container  Start here-->
+<div class="container">
+    <div class="col-md-10">
+     <!--Main panel Start here-->
+		<div class="panel panel-default">
+            <div class="panel-heading"><span class="glyphicon glyphicon-star"></span> Human Resource
+            </div>
+        				 <!-- panel body start here-->
+						<div class="panel-body">
+
+                                <div class="col-sm-3">
+                            <ul class="nav nav-pills nav-stacked">
+
+                              <li><a href="{% url "employee-new" %}"><span class="glyphicon glyphicon-user"></span> Add
+                                  New Employee</a></li>
+                              <li><a href="/list"
+                                    class="active">
+                                  <span class="glyphicon glyphicon-star"></span> Employee</a></li>
+                            </ul>
+                                </div>
+
+					</div>
+        				<!-- panel body end here-->
+                        </div>
+    <!-- panel Start here-->
+        </div>
+    </div>
+</div>
+    <!--Java script calling tag  -->
+
+{% endblock %}

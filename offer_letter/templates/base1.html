@@ -1,0 +1,110 @@
+{% load staticfiles %}
+<html>
+  <head>
+       <title>Welcome To NESCODE</title>
+      <link href="{% static 'image/nescode.png' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+       <link href="{% static 'nescode.css' %}" rel="stylesheet" media="screen">
+  </head>
+   <!--base page start here (master page) -->
+<body>
+ <!--top nevigation bar start here-->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <!--flod container start here-->
+      <div class="container-fluid">
+      <!--top nevigation bar header left content start here-->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          {% if user.is_authenticated %}
+                    <a class="navbar-brand ellipsis" href="/home" title="Home">
+					<span><img src="{% static "image/nescode.png" %}" alt="NESCODE" title="Home"/><span><b>
+                        NESCODE</b></span></span>
+				</a>
+                     {% else %}
+                         <a class="navbar-brand ellipsis" href="/">
+					<span><img src="{% static "image/nescode.png" %}" alt="NESCODE"/><span><b> NESCODE</b></span></span>
+				</a>
+                    {% endif %}
+        </div>
+        <!--top nevigation bar header left content end here-->
+      <!--top nevigation bar header  right content start here-->
+        <div id="navbar" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if user.is_authenticated %}
+
+                    <li class="dropdown logged-in" id="website-post-login"
+						data-label="website-post-login" style="">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<img class="user-picture" style="min-width: 20px; max-height: 25px; border-radius: 10px"
+                                 src="https://secure.gravatar.com/avatar">
+								 {{ user.username }}<b class="caret"></b>
+						</a>
+				        <ul class="dropdown-menu"><li data-label="User"
+                                    ></li>
+                             <li data-label="Logout"><a href="/"
+                                            rel="nofollow"><i class="glyphicon glyphicon-leaf"></i> Go to Website
+                                        </a></li>
+                                <li data-label="Update password"><a href = "/update-password"
+                                            rel="nofollow"><i class="glyphicon glyphicon-log-in"></i> Reset Password
+                                        </a></li>
+
+                                <li data-label="Logout">
+                                    <a href="/logout"rel="nofollow"><i class="glyphicon glyphicon-lock"></i> Logout
+                                    </a></li>
+                            </ul>
+					</li>
+                        {% else %}
+                         <li class="btn-login-area"><a href="/login">SignUp/Login</a></li>
+                                    {% endif %}
+
+				</ul>
+        <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">File</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Help <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#"><i class="fa fa-building"></i>About</a></li>
+                                <li><a href="#"><i class="fa fa-file-pdf-o"></i>Documentation</a></li>
+                                <li><a href="#"><i class="fa fa-rocket"></i>Report an issue</a></li>
+                                <li><a href="#"><i class="fa fa-envelope"></i>Email us</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+        </div>
+      <!--top nevigation bar header  right content end here-->
+      </div>
+    <!--floud container end here-->
+    </nav>
+ <!--top nevigation bar end here-->
+   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--left nevigation bar start here-->
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-1 sidebar" style="width: 175px">
+          <ul class="nav nav-sidebar">
+            <li  ><a href="/home" class="glyphicon glyphicon-home"> Dashbord</a></li>
+            <li><a href="/human-resource"><i class="glyphicon glyphicon-user"></i> Human Resource</a></li>
+
+          </ul>
+        </div>
+             <div class="col-sm-9 col-sm-offset- col-md-10 col-md-offset-2 maincol-sm-9 col-sm-offset-3 col-md-10
+             col-md-offset-2 main">
+            {% block offer %}
+                <!--template content goes here.-->
+            {% endblock %}
+        </div>
+      </div>
+    </div>
+ <!--left nevigation bar  end here-->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+  </body>
+ <!--base page end here (master page) -->
+</html>

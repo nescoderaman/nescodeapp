@@ -1,0 +1,39 @@
+{% extends "base_login.html" %}
+
+{% block offer %}
+      <!--Register success form starts here-->
+    <form method="post" action=".">{% csrf_token %}
+  <!--container starts here-->
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                      <!--pannel starts here-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Thank you for registering with NESCODE.</h3>
+                        </div>
+                         <!--pannel body starts here-->
+                        <div class="panel-body">
+
+                            <fieldset>
+                                <div class="alert alert-success" role="alert">
+                                     Registration Completed Successfully.
+                                </div>
+
+                                <a href="/login">Login</a>
+                            </fieldset>
+
+                        </div>
+                         <!--pannel body end here-->
+                    </div>
+                     <!--pannel end here-->
+                </div>
+            </div>
+        </div>
+        <!-- /container -->
+
+    </form>
+<!--Java script calling tag  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ {% endblock %}

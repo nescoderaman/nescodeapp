@@ -1,0 +1,74 @@
+{% extends "base1.html" %}
+{% load staticfiles %}
+{% block offer %}
+<script src="{% static 'nescode.js' %}"></script>
+     <link href="{% static 'nescode.css' %}" rel="stylesheet" media="screen">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+     <script src="{% static 'dist/js/myjs.js' %}"></script>
+     <script src="../../static/dist/js/npm.js"></script>
+    <script src="../../static/dist/js/bootstrap.js"></script>
+<script src="{% static 'dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'nescode.js' %}"></script>
+     <!-- container  Start here-->
+<div class="container">
+    <div class="col-md-10">
+     <!--Main panel Start here-->
+		<div class="panel panel-default">
+            <div class="panel-heading"><span class="glyphicon glyphicon-star"></span> Human Resource
+            </div>
+        				 <!-- panel body start here-->
+						<div class="panel-body">
+
+                                <div class="col-sm-3">
+                            <ul class="nav nav-pills nav-stacked">
+
+                              <li><a href="{% url "employee-new" %}"><span class="glyphicon glyphicon-user"></span> Add
+                                  New Employee</a></li>
+                              <li><a href="/list">
+                                  <span class="glyphicon glyphicon-star"></span> Employee</a></li>
+                            </ul>
+                                </div>
+                                 <div class="col-md-9" >
+                                  <!--inside panel second panel Start here-->
+									<div class="panel panel-default">
+											<div class="panel-heading">
+                                                <span class="glyphicon glyphicon-star"></span> Employee list
+           									</div>
+											<div class="panel-body">
+												<input type="text" class="form-control" id="task-table-filter" data-action="filter"
+													   data-filters="#task-table" placeholder="Search Employee By Name Or Employee Id" />
+
+											<table class="table table-hover" id="task-table">
+												<thead>
+													<tr>
+														<th>#</th>
+														<th>Name</th>
+														<th>Employee Id</th>
+														<th>Designation</th>
+													</tr>
+												</thead>
+												<tbody>
+												{% for offer1 in object_list %}
+													<tr>
+														<td>#</td>
+														<td><a href="{% url "employee-view" pk=offer1.id %}">{{ offer1 }}</td>
+														<td>{{ offer1.empid }}</td>
+														<td>{{ offer1.designation }}</td></a>
+													</tr>
+													{% endfor %}
+												</tbody>
+											</table>
+										</div>
+									</div>
+                                 	<!--inside panel second panel end here-->
+                                 </div> </div>
+					</div>
+        				<!-- panel body end here-->
+                        </div>
+    <!-- panel Start here-->
+        </div>
+    </div>
+</div>
+    <!--Java script calling tag  -->
+
+{% endblock %}
