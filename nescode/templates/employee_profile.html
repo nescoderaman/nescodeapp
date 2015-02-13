@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% load cms_tags staticfiles sekizai_tags menu_tags %}
+
+{% block content %}
+<div>
+  {% placeholder "feature" %}
+</div>
+<div>
+  {% placeholder "content" %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<div class="container">
+<div class="row" style="padding-top:20px">
+<div class="col-md-2 colmd-offset-1">
+<ul class="list-group brsidemenu">
+	<li class="list-group-item"><a href="#">Profile</a></li>
+	<li class="list-group-item"><a href="/update-password">Reset Password</a></li>
+</ul>
+</div>
+<div class="col-md-8 col-md-offset-1">
+
+                    <div class="panel panel-default">
+                    <div class="panel-heading">
+                    <span class="glyphicon glyphicon-user"></span>
+                    {{ user.get_profile.salutation }} {{ user.get_profile.first_name }} {{ user.get_profile.last_name }}
+                     </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="../../static/image/photo.png?sz=100"
+                                                                         class="img-circle"> </div>
+                    <div class=" col-md-9 ">
+                      <table class="table table-user-information">
+                        <tbody>
+                          <tr>
+                            <h4 class="text-danger">1. Personal Information</h4>
+                          </tr>
+                          <tr>
+                            <td>First Name :</td>
+                            <td>{{ user.get_profile.first_name }}</td>
+                          </tr>
+                          <tr>
+                            <td>Last Name :</td>
+                            <td>{{ user.get_profile.last_name }}</td>
+                          </tr>
+                           <tr>
+                            <td>Email Id :</td>
+                            <td>{{ user.get_profile.presnal_email }}</td>
+                          </tr>
+                          <tr>
+                            <td> <h4 class="text-danger">2. Short Bio</h4></td>
+                          </tr>
+                          <tr>
+                            <td>Date Of Birth :</td>
+                            <td>{{ user.get_profile.dob }}</td>
+                          </tr>
+                          <tr>
+                            <td>Mobile Number:</td>
+                            <td>{{ user.get_profile.mobile }}</td>
+                          </tr>
+                          <tr>
+                            <td>Phone Number:</td>
+                            <td>{{ user.get_profile.phone }}</td>
+                          </tr>
+                          <tr>
+                            <td>Permanent Address:</td>
+                            <td>{{ user.get_profile.home_address }}</td>
+                          </tr>
+                           <tr>
+                            <td>Local Address :</td>
+                            <td>{{ user.get_profile.local_address }}</td>
+                          </tr>
+                          <tr>
+                            <td><h4 class="text-danger">3. Profesnal Info</h4></td>
+                          </tr>
+                          <tr>
+                            <td>Company:</td>
+                            <td>{{ user.get_profile.company }}</td>
+                          </tr>
+                           <tr>
+                           <td>User Id : </td>
+                            <td>{{ user.username }}</td>
+                          </tr>
+                          <tr>
+                           <td>Employee Id : </td>
+                            <td>EMP/NC/00{{ user.get_profile.id }}</td>
+                          </tr>
+                          <tr>
+                            <td>Department :</td>
+                            <td>{{ user.get_profile.department }}</td>
+                          </tr>
+                          <tr>
+                            <td>Designation :</td>
+                            <td>{{ user.get_profile.designation }}</td>
+                          </tr>
+
+                          <tr>
+                            <td>Date Of Joining :</td>
+                            <td>{{ user.get_profile.doj }}</td>
+                          </tr>
+                           <tr>
+                            <td>Total Leave:</td>
+                            <td>{{ user.get_profile.total_leave }}</td>
+                          </tr>
+                            <tr>
+                            <td>CTC :</td>
+                            <td>{{ user.get_profile.ctc }}</td>
+                            <tr>
+                              <td>Employment Type :</td>
+                              <td>{{ user.get_profile.employment_type }}</td>
+                          </tr>
+                        <tr>
+                              <td>Total Exp :</td>
+                              <td>{{ user.get_profile.total_exp }}</td>
+                          </tr>
+
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+                </div>
+
+</div>
+</div>
+
+<!--model for make employee butten start here-->
+
+
+<!--model end here-->
+    <!--Java script calling tag  -->
+{% endblock content %}

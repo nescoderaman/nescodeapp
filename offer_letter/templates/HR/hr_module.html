@@ -11,32 +11,36 @@
 <script src="{% static 'nescode.js' %}"></script>
      <!-- container  Start here-->
 <div class="container">
-    <div class="col-md-10">
+    <div class="col-md-11">
      <!--Main panel Start here-->
 		<div class="panel panel-default">
-            <div class="panel-heading"><span class="glyphicon glyphicon-star"></span> Human Resource
-            </div>
+            <div class="panel-heading"><span class="glyphicon glyphicon-hand-right"></span> Human Resource
+                </div>
         				 <!-- panel body start here-->
 						<div class="panel-body">
 
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                             <ul class="nav nav-pills nav-stacked">
 
-                              <li><a href="{% url "employee-new" %}"><span class="glyphicon glyphicon-user"></span> Add
-                                  New Employee</a></li>
-                              <li><a href="/list"
-                                    class="active">
-                                  <span class="glyphicon glyphicon-star"></span> Employee</a></li>
+                              <li><a href="/list"><span class="glyphicon glyphicon-transfer">
+
+                              </span> Recruitment</a></li>
+                              <li><a href="/emp-list"><span class="glyphicon glyphicon-user">
+
+                              </span> Employee</a></li>
                             </ul>
+                                    <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
                                 </div>
+
+
 
 					</div>
         				<!-- panel body end here-->
                         </div>
     <!-- panel Start here-->
         </div>
-    </div>
 </div>
+
     <!--Java script calling tag  -->
 
 {% endblock %}

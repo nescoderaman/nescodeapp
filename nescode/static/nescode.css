@@ -1,5 +1,5 @@
 img{
-    border-top-width: 1px;
+ /*   border-top-width: 1px;
     border-top-style: solid;
     border-right-width: 1px;
     border-right-style: solid;
@@ -9,8 +9,9 @@ img{
     border-bottom-style: solid;
     -webkit-border-radius: 20px;
 -moz-border-radius: 20px;
-border-radius: 20px;
+border-radius: 20px;  */
 }
+
 /* make sidebar nav vertical */
 @media (min-width: 768px) {
   .sidebar-nav .navbar .navbar-collapse {
@@ -113,10 +114,10 @@ tbody{
 .main {
   padding: 20px;
 }
-@media (min-width: 768px) {
+@media (min-width: 968px) {
   .main {
     padding-right: 40px;
-    padding-left: 40px;
+    padding-left: 70px;
   }
 }
 .main .page-header {

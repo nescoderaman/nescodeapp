@@ -8,9 +8,24 @@
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
 <form action="{{ action }}" method="POST" role="form">{% csrf_token %}
 <div class="container">
-    <div class="col-md-10">
+ <div class="col-md-11">
+     <!--Main panel Start here-->
+            <div class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-hand-right"></span> Human Resource
+                </div>
+                <div class="panel-body">
+                     <div class="col-md-1">
+                            <!--<ul class="nav nav-pills nav-stacked">-->
+
+                              <!--<li><a href="#"><span class="glyphicon glyphicon-user">-->
+
+                              <!--</span> Candidate</a></li>-->
+
+                            <!--</ul>-->
+                     </div>
+                     <div class="col-md-11">
 		<div class="panel panel-default">
-            <div class="panel-heading"><span class="glyphicon glyphicon-user"></span> Add Employee
+            <div class="panel-heading"><span class="glyphicon glyphicon-user"></span> Add Candidate
 
             </div>
             <div class="well well-sm">
@@ -49,7 +64,8 @@
                                            <label for="id_name" class="col-sm-4 control-label" >Name </label>
                                             <div class="col-sm-8">
                                                 <input  class="form-control" id="id_name" max_length="30"
-                                                               name="name" required="True" type="text" value="{{ offer1.name }}" />
+                                                               name="name" required="True" type="text"
+                                                               value="{{ offer1.name }}"  />
                                             </div>
                                     </div>
                                     <div class="form-group">
@@ -61,7 +77,7 @@
                                     </div>
                                     <div class="form-group">
                                            <label for="id_doj" class="col-sm-4 control-label">Date Of Joining </label>
-                                            <div class="col-sm-8">
+                                            <div class="col-sm-8" >
                                                 <input class="form-control"id="id_doj" max_length="30" name="doj" required="True"
                                                             type="text" value="{{ offer1.doj }}"
                                                             placeholder="YY-MM-DD" />
@@ -88,8 +104,8 @@
                                             </div>
                                     </div>
                                     <div class="form-group">
-                                           <label for="id_supervisername" class="col-sm-4 control-label">Superviser
-                                               Name </label>
+                                           <label for="id_supervisername" class="col-sm-4 control-label">HR
+                                           Name</label>
                                             <div class="col-sm-8">
                                                 <input id="id_supervisername"class="form-control" max_length="30"
                                                                        name="supervisername" required="True" type="text"
@@ -113,7 +129,7 @@
                                            <label for="id_ctc" class="col-sm-4 control-label">CTC </label>
                                             <div class="col-sm-8">
                                                 <input id="id_ctc" max_length="30" name="ctc" required="True" class="form-control"type="text"
-                                            value="{{ offer1.ctc }}" />
+                                            value="{{ offer1.ctc }}" placeholder="Amount /- Annum" />
                                             </div>
                                     </div>
                                     <div class="form-group">
@@ -133,8 +149,7 @@
                                             </div>
                                     </div>
                                     <div class="form-group">
-                                           <label for="id_traning_duration"class="col-sm-4 control-label">Traning
-                                               Duration </label>
+                                           <label for="id_traning_duration"class="col-sm-4 control-label">Probationary Period </label>
                                             <div class="col-sm-8">
                                                 <input id="id_traning_duration" max_length="30"
                                                                       name="traning_duration" required="True"class="form-control"
@@ -181,7 +196,12 @@
 				</div>
         </div>
     </div>
+                 </div>
+            </div>
+          </div>
+
 </div>
+
 </form>
      <script src="{% static 'js/bootstrap.min.js' %}"></script>
  <script src="{% static 'js/bootstrap.js' %}"></script>

@@ -10,7 +10,7 @@ from django.conf.urls import patterns, include, url
 from login.views import *
 import login.views
 import offer_letter.views
-
+import offer_letter.emp_view
 
 
 
@@ -45,7 +45,7 @@ if settings.DEBUG:
                        url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
                        url(r'^register/$', register),
                        url(r'^register/success/$', register_success),
-                       url(r'^home/$', home),
+                       url(r'^home/$', offer_letter.views.home,name='home'),
                             #password reset and email authentication url
                        url(r'^success/$','login.views.success_password',name="success"),
                        url(r'^update-password/$', 'login.views.reset', name='reset'),
@@ -61,5 +61,10 @@ if settings.DEBUG:
 
                       #HR Module
                       url(r'human-resource/$',offer_letter.views.hr_module.as_view(),name='hr_module', ),
+                      url(r'create-employee/$',offer_letter.views.register_candidate,name='register', ),
+                      url(r'create-employee/success/$',offer_letter.views.employee_success,name='empployee_success', ),
+                      url(r'^profile/$', 'offer_letter.emp_view.profile', name='profile'),
 
+                      url(r'^edit1111/(?P<pk>\d+)/$', offer_letter.emp_view.UpdateEmployeeView.as_view(),
+                           name='employee-edit1', ),
         ) + staticfiles_urlpatterns() + urlpatterns  # NOQA

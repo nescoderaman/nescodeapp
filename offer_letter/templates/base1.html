@@ -47,9 +47,12 @@
 						</a>
 				        <ul class="dropdown-menu"><li data-label="User"
                                     ></li>
-                             <li data-label="Logout"><a href="/"
-                                            rel="nofollow"><i class="glyphicon glyphicon-leaf"></i> Go to Website
-                                        </a></li>
+                             <li><a href='/profile'><i class="glyphicon glyphicon-user"></i> Profile</a></li>
+                             {% if request.user.is_superuser %}
+                                <li data-label="dashbord"><a href="/"
+                                            rel="nofollow"><i class="glyphicon glyphicon-dashboard"></i> Go to website
+                                        </a></li> {% endif %}
+
                                 <li data-label="Update password"><a href = "/update-password"
                                             rel="nofollow"><i class="glyphicon glyphicon-log-in"></i> Reset Password
                                         </a></li>
@@ -65,16 +68,16 @@
 
 				</ul>
         <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">File</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Help <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#"><i class="fa fa-building"></i>About</a></li>
-                                <li><a href="#"><i class="fa fa-file-pdf-o"></i>Documentation</a></li>
-                                <li><a href="#"><i class="fa fa-rocket"></i>Report an issue</a></li>
-                                <li><a href="#"><i class="fa fa-envelope"></i>Email us</a></li>
-                            </ul>
-                        </li>
+                        <!--<li><a href="#">File</a></li>-->
+                        <!--<li class="dropdown">-->
+                            <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Help <span class="caret"></span></a>-->
+                            <!--<ul class="dropdown-menu" role="menu">-->
+                                <!--<li><a href="#"><i class="fa fa-building"></i>About</a></li>-->
+                                <!--<li><a href="#"><i class="fa fa-file-pdf-o"></i>Documentation</a></li>-->
+                                <!--<li><a href="#"><i class="fa fa-rocket"></i>Report an issue</a></li>-->
+                                <!--<li><a href="#"><i class="fa fa-envelope"></i>Email us</a></li>-->
+                            <!--</ul>-->
+                        <!--</li>-->
                     </ul>
 
         </div>
@@ -89,16 +92,41 @@
       <div class="row">
         <div class="col-sm-1 sidebar" style="width: 175px">
           <ul class="nav nav-sidebar">
-            <li  ><a href="/home" class="glyphicon glyphicon-home"> Dashbord</a></li>
+
+            <li><a href="/home"><i class="glyphicon glyphicon-home"></i> Dashbord</a></li>
             <li><a href="/human-resource"><i class="glyphicon glyphicon-user"></i> Human Resource</a></li>
 
           </ul>
         </div>
              <div class="col-sm-9 col-sm-offset- col-md-10 col-md-offset-2 maincol-sm-9 col-sm-offset-3 col-md-10
-             col-md-offset-2 main">
+             col-md-offset-1 main">
+                  {% if request.user.is_superuser %}
             {% block offer %}
                 <!--template content goes here.-->
             {% endblock %}
+                   {%else%}
+   <div class="container">
+    <div class="row">
+        <div class="col-md-12 col-lg-offset-4">
+            <div class="error-template">
+                <h1>
+                    Oops!</h1>
+                <h2>
+                    404 Not Found</h2>
+                <div class="error-details">
+                    Sorry, an error has occured, Requested page not found!
+                </div>
+                <div class="error-actions">
+                    <br/>
+                    <a href="/" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-home"></span>
+                        Take Me Home </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
         </div>
       </div>
     </div>

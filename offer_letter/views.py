@@ -1,16 +1,21 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.contrib.auth.views import password_reset
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_protect
 from django.views.generic import ListView
 from easy_pdf.views import PDFTemplateView
 from offer_letter import forms
+from offer_letter.forms import RegistrationForm
 from offer_letter.models import offer1
 
 
 class ListContactView(ListView):
     model = offer1
-    template_name = 'employee_list.html'
+    template_name = 'candidate_list.html'
 
     #this is for login required ..without login u can't go to this page
     @method_decorator(login_required)
@@ -92,7 +97,7 @@ from django.views.generic import DetailView
 class EmployeeView(DetailView):
     model = offer1
 
-    template_name = 'employee_profile.html'
+    template_name = 'candidate_profile.html'
 
     #this is for login required ..without login u can't go to this page
     @method_decorator(login_required)
@@ -137,3 +142,41 @@ class hr_module(ListView):
     def dispatch(self, *args, **kwargs):
         return super(hr_module, self).dispatch(*args, **kwargs)
 
+
+
+
+@login_required
+def home(request):
+    return password_reset(request, template_name='home.html',
+        post_reset_redirect=reverse('success'))
+
+
+# for making candidate as an employee we have to register that candidate in our application.
+
+
+@csrf_protect
+def register_candidate(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            user = User.objects.create_user(
+            username=form.cleaned_data['username'],
+            password=form.cleaned_data['password1'],
+            email=form.cleaned_data['email']
+
+            )
+            return HttpResponseRedirect('/create-employee/success/')
+    else:
+        form = RegistrationForm()
+    variables = RequestContext(request, {
+    'form': form
+    })
+
+    return render_to_response(
+    'register-candidate.html',
+    variables,
+    )
+@login_required
+def employee_success(request):
+    return password_reset(request, template_name='register-candidate-success.html',
+        post_reset_redirect=reverse('success'))

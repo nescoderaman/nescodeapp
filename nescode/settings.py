@@ -67,7 +67,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+#...........................
+#for user profile
+AUTH_PROFILE_MODULE = 'offer_letter.UserProfile'
+#...............................
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
@@ -137,19 +140,19 @@ INSTALLED_APPS = (
     'mptt',
     'djangocms_style',
     'djangocms_column',
-    'djangocms_file',
-    'djangocms_flash',
-    'djangocms_googlemap',
-    'djangocms_inherit',
-    'djangocms_link',
-    'djangocms_picture',
-    'djangocms_teaser',
-    'djangocms_video',
+   # 'djangocms_file',
+   # 'djangocms_flash',
+    #'djangocms_googlemap',
+   # 'djangocms_inherit',
+   # 'djangocms_link',
+   # 'djangocms_picture',
+    #'djangocms_teaser',
+    #'djangocms_video',
     'south',
-    'reversion',
+    #'reversion',
     'nescode',
     'offer_letter',
-    #'easy_pdf',
+    'easy_pdf',
     'login',
 )
 
