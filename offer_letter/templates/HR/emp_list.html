@@ -1,0 +1,100 @@
+{% extends "base1.html" %}
+{% load staticfiles %}
+{% block offer %}
+<script src="{% static 'nescode.js' %}"></script>
+     <link href="{% static 'nescode.css' %}" rel="stylesheet" media="screen">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+     <script src="{% static 'dist/js/myjs.js' %}"></script>
+     <script src="../../static/dist/js/npm.js"></script>
+    <script src="../../static/dist/js/bootstrap.js"></script>
+<script src="{% static 'dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'nescode.js' %}"></script>
+     <!-- container  Start here-->
+<div class="container">
+    <div class="col-md-11">
+     <!--Main panel Start here-->
+		<div class="panel panel-default">
+            <div class="panel-heading"><span class="glyphicon glyphicon-hand-right"></span> Human Resource
+                </div>
+        				 <!-- panel body start here-->
+						<div class="panel-body">
+
+                                <div class="col-sm-2">
+                            <ul class="nav nav-pills nav-stacked">
+
+                              <li><a href="/list"><span class="glyphicon glyphicon-transfer">
+
+                              </span> Recruitment</a></li>
+                                <li class="active"><a href="#"><span class="glyphicon glyphicon-user">
+
+                              </span> Employee</a></li>
+
+                            </ul>
+                                </div>
+
+                            <div class="col-md-10" >
+                                  <!--inside panel second panel Start here-->
+									<div class="panel panel-default">
+											<div class="panel-heading">
+                                                	<h3 class="panel-title">Employee list</h3>
+                                        <div class="pull-right" style="padding-top:16px">
+                                            <div class="dropdown">
+                                              <button class="btn  btn-sm dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                                                      aria-expanded="true">
+                                                <span class="glyphicon glyphicon-th-list"></span>
+                                              </button>
+                                              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                                <li role="presentation"><a role="menuitem" tabindex="-1"
+                                                                           href="{% url "employee-new2" %}">Add
+                                                    Employee</a></li>
+                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Employee
+                                                </a></li>
+                                              </ul>
+                                            </div>
+                                        </div>
+
+           									</div>
+											<div class="panel-body">
+												<input type="text" class="form-control" id="task-table-filter" data-action="filter"
+													   data-filters="#task-table" placeholder="Search Employee By Name Or Employee Id" />
+
+											<table class="table table-hover" id="task-table">
+												<thead>
+													<tr>
+														<th>#</th>
+														<th>Name</th>
+														<th>Employee Id</th>
+														<th>Post</th>
+                                                        <th>Joining Date</th>
+													</tr>
+												</thead>
+												<tbody>
+												{% for emp in object_list %}
+													<tr>
+														<td>#</td>
+														<td>
+                                                            <a href="{% url "employee-view2" pk=emp.id%}">
+                                                            {{emp.offer1}}</a></td>
+														<td>EMP/NC/00{{ emp.id }}</td>
+														<td>{{ emp.designation }}</td>
+                                                        <td>{{ emp.doj}}</td></a>
+													</tr>
+													{% endfor %}
+												</tbody>
+											</table>
+										</div>
+									</div>
+                                 	<!--inside panel second panel end here-->
+                                 </div>
+
+
+                        </div>
+					</div>
+        				<!-- panel body end here-->
+                        </div>
+    <!-- panel Start here-->
+        </div>
+    </div>
+</div>
+    <!--Java script calling tag  -->
+{% endblock %}

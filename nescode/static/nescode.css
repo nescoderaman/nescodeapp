@@ -171,3 +171,7 @@ tbody{
   color: #fff;
   background-color: #000000;
 }
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+color: black;
+background-color: #F0F8F8;
+}

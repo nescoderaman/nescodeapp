@@ -1,0 +1,135 @@
+{% extends "base1.html" %}
+{% load staticfiles %}
+{% block offer %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<div class="container">
+       <div class="col-md-11">
+     <!--Main panel Start here-->
+            <div class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-hand-right"></span> Human Resource
+                </div>
+                <div class="panel-body">
+                     <div class="col-md-2">
+                            <ul class="nav nav-pills nav-stacked">
+
+                              <li class="active"><a href="#"><span class="glyphicon glyphicon-user">
+
+                              </span> Candidate</a></li>
+
+                            </ul>
+                     </div>
+                        <div class="col-md-10">
+
+                    <div class="panel panel-default">
+                    <div class="panel-heading">
+                    <span class="glyphicon glyphicon-user"></span>
+                    {{ offer1.salutation }} {{ offer1.name }}
+                     </div>
+
+               <div class="well well-sm">
+                         <a href=" {% url "get-offer" pk=offer1.id %}" class="btn btn-default btn-xs">Generate offer
+                             letter</a>
+                         <!--<a href="" class="btn btn-default btn-xs"data-target="#myModal"data-toggle="modal">Make employee</a>-->
+                        <a href="{% url "employee-edit" pk=offer1.id %}" class="btn btn-default btn-xs">Edit</a>
+                        <a href="{% url "employee-delete" pk=offer1.id %}" class="btn btn-default btn-xs">Delete</a>
+                        <a href="/list" class="btn btn-default btn-xs">Back</a>
+               </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="../../static/image/photo.png?sz=100"
+                                                                         class="img-circle"> </div>
+                    <div class=" col-md-9 col-lg-9 ">
+                      <table class="table table-user-information">
+                        <tbody>
+                          <tr>
+                            <td>Employee Id: </td>
+                            <td>{{ offer1.empid }}</td>
+                          </tr>
+                          <tr>
+                            <td>Designation:</td>
+                            <td>{{ offer1.designation }}</td>
+                          </tr>
+                           <tr>
+                            <td>Company:</td>
+                            <td>{{ offer1.company }}</td>
+                          </tr>
+                          <tr>
+                            <td>Hire date:</td>
+                            <td>{{ offer1.doj }}</td>
+                          </tr>
+                           <tr>
+                            <td>Hired By:</td>
+                            <td>{{ offer1.supervisername }}</td>
+                          </tr>
+                          <tr>
+                            <td>Traning Duration:</td>
+                            <td>{{ offer1.traning_duration }}</td>
+                          </tr>
+                          <tr>
+                            <td>Current CTC:</td>
+                            <td>{{ offer1.ctc }}</td>
+                          </tr>
+                          <tr>
+                            <td>Current Job Location:</td>
+                            <td>{{ offer1.location }}</td>
+                          </tr>
+                           <tr>
+                            <td>Total Leave:</td>
+                            <td>{{ offer1.leave }}</td>
+                          </tr>
+                            <tr>
+                            <td>Home Address:</td>
+                            <td>{{ offer1.add1 }}</td>
+                            <tr>
+                              <td></td>
+                              <td>{{ offer1.add2 }}</td>
+                          </tr>
+                        <tr>
+                              <td></td>
+                              <td>{{ offer1.add3 }}</td>
+                          </tr>
+
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+                </div>
+             </div>
+            </div>
+          </div>
+
+      </div>
+</div>
+        				<!-- panel body end here-->
+
+
+<!--model for make employee butten start here-->
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to make this candidate as employee ?</p>
+                <p
+                        class="text-default"><small>For making candidate as employee you have to have
+                    create employee account.</small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                <a href="/create-employee" type="button" class="btn btn-primary btn-sm">Create</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--model end here-->
+    <!--Java script calling tag  -->
+{% endblock %}

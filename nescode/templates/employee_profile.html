@@ -1,28 +1,30 @@
-{% extends "base.html" %}
-{% load cms_tags staticfiles sekizai_tags menu_tags %}
-
-{% block content %}
-<div>
-  {% placeholder "feature" %}
-</div>
-<div>
-  {% placeholder "content" %}
+{% extends "base1.html" %}
+{% load staticfiles %}
+{% block offer %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <div class="container">
-<div class="row" style="padding-top:20px">
-<div class="col-md-2 colmd-offset-1">
-<ul class="list-group brsidemenu">
-	<li class="list-group-item"><a href="#">Profile</a></li>
-	<li class="list-group-item"><a href="/update-password">Reset Password</a></li>
-</ul>
-</div>
-<div class="col-md-8 col-md-offset-1">
+       <div class="col-md-11">
+     <!--Main panel Start here-->
+            <div class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-hand-right"></span> Employee Profile
+                </div>
+                <div class="panel-body">
+                     <div class="col-md-2">
+                            <ul class="nav nav-pills nav-stacked">
+
+                              <li class="active"><a href="#"><span class="glyphicon glyphicon-user">
+
+                              </span> Employee</a></li>
+
+                            </ul>
+                     </div>
+                    <div class="col-md-10">
 
                     <div class="panel panel-default">
                     <div class="panel-heading">
                     <span class="glyphicon glyphicon-user"></span>
-                    {{ user.get_profile.salutation }} {{ user.get_profile.first_name }} {{ user.get_profile.last_name }}
+                    {{ user.username }}
                      </div>
                 <div class="panel-body">
                   <div class="row">
@@ -35,12 +37,8 @@
                             <h4 class="text-danger">1. Personal Information</h4>
                           </tr>
                           <tr>
-                            <td>First Name :</td>
-                            <td>{{ user.get_profile.first_name }}</td>
-                          </tr>
-                          <tr>
-                            <td>Last Name :</td>
-                            <td>{{ user.get_profile.last_name }}</td>
+                            <td>User Name :</td>
+                            <td>{{ user.username }}</td>
                           </tr>
                            <tr>
                             <td>Email Id :</td>
@@ -122,7 +120,11 @@
 
               </div>
                 </div>
-
+                 </div>
+            </div>
+        				<!-- panel body end here-->
+       </div>
+    <!-- panel Start here-->
 </div>
 </div>
 
@@ -131,4 +133,4 @@
 
 <!--model end here-->
     <!--Java script calling tag  -->
-{% endblock content %}
+{% endblock %}

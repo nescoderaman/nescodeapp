@@ -1,0 +1,239 @@
+{% extends "base1.html" %}
+{% load staticfiles %}
+{% block offer %}
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<form action="{{ action }}" method="POST" role="form">{% csrf_token %}
+<div class="container">
+ <div class="col-md-11">
+     <!--Main panel Start here-->
+            <div class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-hand-right"></span> Human Resource
+                </div>
+                <div class="panel-body">
+                     <div class="col-md-1">
+                            <!--<ul class="nav nav-pills nav-stacked">-->
+
+                              <!--<li><a href="#"><span class="glyphicon glyphicon-user">-->
+
+                              <!--</span> Candidate</a></li>-->
+
+                            <!--</ul>-->
+                     </div>
+                     <div class="col-md-11">
+		<div class="panel panel-default">
+            <div class="panel-heading"><span class="glyphicon glyphicon-user"></span> Add Employee
+
+            </div>
+            <div class="well well-sm">
+                <button type="submit" class="btn btn-default btn-xs" id="save_contact" >Save</button>
+                <a href="/emp-list" class="btn btn-default btn-xs">Back</a>
+            </div>
+
+					<div class="panel-body">
+                            <!-- employee informations -->
+                            <div class="col-sm-6">
+                                <!-- employee information first row Start-->
+                                <div class="panel-body form-horizontal">
+                                        <div class="form-group">
+                                            <label for="id_salutation" class="col-sm-4 control-label">Salutation</label>
+                                            <div class="col-sm-6">
+                                                <div class="dropdown">
+                                                     <select id="id_salutation" name="salutation"
+                                                             class="form-control">
+                                                         {% if emp.id %}
+                                                    <option>{{ emp.salutation }}</option>
+                                                    <option value="Mr">Mr</option>
+                                                    <option value="Mrs">Mrs</option>
+                                                         {% else %}
+                                                     <option value="">Select</option>
+                                                    <option value="Mr">Mr</option>
+                                                    <option value="Mrs">Mrs</option>
+                                                         {% endif %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="id_offer1" class="col-sm-4 control-label">Employee
+                                                Name</label>
+                                            <div class="col-sm-6">
+                                                <div class="dropdown">
+
+                                                    <select id="id_offer1" name="offer1"
+                                                             class="form-control" value="{{form.offer1}}
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    <div class="form-group">
+                                           <label for="id_first_name" class="col-sm-4 control-label" >First Name </label>
+                                            <div class="col-sm-8">
+                                                <input  class="form-control" id="id_first_name" max_length="30"
+                                                        name="first_name"type="text"
+                                                        value="{{ emp.offer1 }}"  />
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="id_last_name" class="col-sm-4 control-label" >Last Name </label>
+                                            <div class="col-sm-8">
+                                                <input  class="form-control" id="id_last_name" maxlength="100" name="last_name" type="text" value="{{ emp.last_name }}"  />
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="id_designation" class="col-sm-4 control-label">Email Id
+                                           </label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control"id="id_presnal_email" maxlength="100" name="presnal_email" type="text" value="{{ emp.presnal_email }}" />
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="id_empid" class="col-sm-4 control-label">Date Of Birth</label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control"id="id_dob" maxlength="100" name="dob"
+                                                       type="text" value="{{ emp.dob }}" />
+                                                 <script type="text/javascript">
+                                                                                                     $(function() {
+                                                                                                         $("#id_dob")
+                                                                                                         .datepicker({ dateFormat: "yy-mm-dd" }).val()
+                                                                                                     })</script>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="id_doj" class="col-sm-4 control-label">Date Of Joining </label>
+                                            <div class="col-sm-8" >
+                                                <input class="form-control"id="id_doj" maxlength="100" name="doj" type="text" value="{{ emp.doj }}"
+                                                            placeholder="YY-MM-DD" />
+                                                                                                    <script type="text/javascript">
+                                                                                                     $(function() {
+                                                                                                         $("#id_doj").datepicker({ dateFormat: "yy-mm-dd" }).val()
+                                                                                                     })</script>
+
+                                            </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                           <label for="id_company" class="col-sm-4 control-label">Mobile Number </label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control"id="id_mobile" maxlength="100"
+                                                       name="mobile" type="text" value="{{ emp.mobile }}" />
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="id_supervisername" class="col-sm-4 control-label">phone
+                                               Number</label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control"id="id_phone" maxlength="100" name="phone" type="text" value="{{ emp.phone }}" />
+                                            </div>
+                                    </div>
+                                     <div class="form-group">
+                                           <label for="id_alternet_no" class="col-sm-4 control-label">Alternet Number</label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control"id="id_alternet_no" maxlength="100" name="alternet_no" type="text" value="{{ emp.alternet_no }}" />
+                                            </div>
+                                    </div>
+
+
+                                </div>
+
+                                                    </div>
+                                            {% if form.errors %}
+                             <div style="text-align: center">
+                             <p>Error :- Please Select Location.</p>
+                         {% endif %}
+                            <!-- employee information first row End-->
+
+                            <!--employee information row second Row Start-->
+
+                            <div class="col-sm-6">
+                                <div class="panel-body form-horizontal">
+                                    <div class="form-group">
+                                           <label for="company" class="col-sm-4 control-label">Company </label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control" id="id_company" maxlength="100" name="company" type="text"
+                                                       value="{{ emp.company }}" />
+                                            </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                           <label for="id_traning_duration"class="col-sm-4 control-label">Department
+                                           </label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control"id="id_department" maxlength="100" name="department" type="text" value="{{ emp.department }}" />
+
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="designation"class="col-sm-4 control-label">Designation </label>
+                                            <div class="col-sm-8">
+                                                <input id="id_designation" maxlength="100" name="designation" type="text" class="form-control"value="{{ emp.designation }}" />
+
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="id_leave"class="col-sm-4 control-label">Home Address </label>
+                                            <div class="col-sm-8">
+                                               <input id="id_home_address" maxlength="100" name="home_address" type="text" value="{{ emp.home_address }}" class="form-control"/>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="id_add1"class="col-sm-4 control-label">Local Address </label>
+                                            <div class="col-sm-8">
+                                                <input id="id_local_address" maxlength="100" name="local_address" type="text" value="{{ emp.local_address }}" class="form-control"/>
+
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="id_add2" class="col-sm-4 control-label">CTC </label>
+                                            <div class="col-sm-8">
+                                                <input id="id_ctc" maxlength="100" name="ctc" type="text"
+                                                       value="{{ emp.ctc }}" class="form-control" placeholder="Amount /- Annum"/>
+
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="id_add3"class="col-sm-4 control-label">Leave</label>
+                                            <div class="col-sm-8">
+                                                 <input id="id_total_leave" maxlength="100" name="total_leave" type="text" value="{{ emp.total_leave }}" class="form-control"/>
+
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                           <label for="total_exp"class="col-sm-4 control-label">Total Exp</label>
+                                            <div class="col-sm-8">
+                                                 <input id="id_total_exp" maxlength="100" name="total_exp" type="text" value="{{ emp.total_exp }}" class="form-control"/>
+
+                                            </div>
+                                    </div>
+                                     <div class="form-group">
+                                           <label for="employment_type" class="col-sm-4 control-label">
+                                               Employment Type</label>
+                                            <div class="col-sm-8">
+                                                <input class="form-control"id="id_employment_type" maxlength="100" name="employment_type" type="text" value="{{ emp.employment_type }}" />
+                                            </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+				</div>
+        </div>
+    </div>
+                 </div>
+            </div>
+          </div>
+
+</div>
+
+</form>
+     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+ <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'nescode.js' %}"></script>
+{% endblock %}

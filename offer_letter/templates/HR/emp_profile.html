@@ -1,0 +1,214 @@
+{% extends "base1.html" %}
+{% load staticfiles %}
+{% block offer %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<div class="container">
+       <div class="col-md-11">
+     <!--Main panel Start here-->
+            <div class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-hand-right"></span> Human Resource
+                </div>
+                <div class="panel-body">
+                     <div class="col-md-2">
+                            <ul class="nav nav-pills nav-stacked">
+
+                              <li class="active"><a href="#"><span class="glyphicon glyphicon-user">
+
+                              </span> Employee</a></li>
+
+                            </ul>
+                     </div>
+                        <div class="col-md-10">
+
+                    <div class="panel panel-default">
+                    <div class="panel-heading">
+                    <span class="glyphicon glyphicon-user"></span>
+                    {{ emp.offer1.salutation }} {{ emp.offer1 }}
+                     </div>
+
+               <div class="well well-sm">
+                        <a href="{% url "employee-edit2" pk=emp.id %}" class="btn btn-default btn-xs">Edit</a>
+                          <a href="{% url "employee-delete2" pk=emp.id %}" class="btn btn-default btn-xs">Delete</a>
+                        <a href="/emp-list" class="btn btn-default btn-xs">Back</a>
+               </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="../../static/image/photo.png?sz=100"
+                                                                         class="img-circle"> </div>
+                    <div class=" col-md-9 ">
+                      <table class="table table-user-information">
+                        <tbody>
+                          <tr>
+                            <h4 class="text-danger">1. Personal Information</h4>
+                          </tr>
+                          <tr>
+                            <td>Employee Name :</td>
+                            <td>{{ emp.offer1 }}</td>
+                          </tr>
+                           <tr>
+                            <td>Email Id :</td>
+                            <td>{{ emp.presnal_email }}</td>
+                          </tr>
+                          <tr>
+                            <td>Emergency Contact:</td>
+                            <td>{{ emp.alternet_no }}</td>
+                          </tr>
+                          <tr>
+                            <td>Relation:</td>
+                            <td>{{ emp.Relation }}</td>
+                          </tr>
+                          <tr>
+                            <td> <h4 class="text-danger">2. Short Bio</h4></td>
+                          </tr>
+                          <tr>
+                            <td>Date Of Birth :</td>
+                            <td>{{ emp.dob }}</td>
+                          </tr>
+                          <tr>
+                            <td>Marital Status:</td>
+                            <td>{{ emp.Marital_Status }}</td>
+                          </tr>
+                          <tr>
+                            <td>Blood Group:</td>
+                            <td>{{ emp.Blood_Group }}</td>
+                          </tr>
+                          <tr>
+                            <td>Mobile Number:</td>
+                            <td>{{ emp.mobile }}</td>
+                          </tr>
+                          <tr>
+                            <td>Phone Number:</td>
+                            <td>{{ emp.phone }}</td>
+                          </tr>
+                          <tr>
+                            <td>Permanent Address:</td>
+                            <td>{{ emp.home_address }}</td>
+                          </tr>
+                           <tr>
+                            <td>Local Address :</td>
+                            <td>{{ emp.local_address }}</td>
+                          </tr>
+                          <tr>
+                            <td>Pasport Number:</td>
+                            <td>{{ emp.Passport_Number }}</td>
+                          </tr>
+                          <tr>
+                            <td>Date of Issue:</td>
+                            <td>{{ emp.Date_of_Issue }}</td>
+                          </tr>
+                          <tr>
+                            <td>Place of Issue:</td>
+                            <td>{{ emp.Place_of_Issue }}</td>
+                          </tr>
+                          <tr>
+                            <td><h4 class="text-danger">3. Initial  Info</h4></td>
+                          </tr>
+                          <tr>
+                            <td>Selected By :</td>
+                            <td>{{ emp.offer1.supervisername }}</td>
+                          </tr>
+                           <tr>
+                            <td>Date Of Interview:</td>
+                            <td>{{ emp.offer1.doj }}</td>
+                          </tr>
+                          <tr>
+                            <td><h4 class="text-danger">4. Profesnal Info</h4></td>
+                          </tr>
+                          <tr>
+                            <td>Company:</td>
+                            <td>{{ emp.company }}</td>
+                          </tr>
+                            <tr>
+                           <td>Job Location : </td>
+                            <td>{{ emp.job_location }}</td>
+                          </tr>
+                          <tr>
+                           <td>Employee Id : </td>
+                            <td>EMP/NC/00{{ emp.id }}</td>
+                          </tr>
+                          <tr>
+                            <td>Department :</td>
+                            <td>{{ emp.department }}</td>
+                          </tr>
+                          <tr>
+                            <td>Designation :</td>
+                            <td>{{ emp.designation }}</td>
+                          </tr>
+
+                          <tr>
+                            <td>Date Of Joining :</td>
+                            <td>{{ emp.doj }}</td>
+                          </tr>
+
+                           <tr>
+                            <td>Total Leave:</td>
+                            <td>{{ emp.total_leave }}</td>
+                          </tr>
+                            <tr>
+                            <td>CTC :</td>
+                            <td>{{ emp.ctc }}</td>
+                            <tr>
+                              <td>Employment Type :</td>
+                              <td>{{ emp.employment_type }}</td>
+                          </tr>
+                          <tr>
+                              <td>PAN Number  :</td>
+                              <td>{{ emp.PAN_Number }}</td>
+                          </tr>
+                          <tr>
+                              <td>Salary_Mode  :</td>
+                              <td>{{ emp.Salary_Mode }}</td>
+                          </tr>
+                          <tr>
+                              <td>Bank Name :</td>
+                              <td>{{ emp.Bank_Name }}</td>
+                          </tr>
+                        <tr>
+                              <td>Bank AC No :</td>
+                              <td>{{ emp.Bank_AC_No }}</td>
+                          </tr>
+
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+                </div>
+             </div>
+            </div>
+          </div>
+
+      </div>
+</div>
+        				<!-- panel body end here-->
+
+
+<!--model for make employee butten start here-->
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to make this candidate as employee ?</p>
+                <p
+                        class="text-default"><small>For making candidate as employee you have to have
+                    create employee account.</small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                <a href="/create-employee" type="button" class="btn btn-primary btn-sm">Create</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--model end here-->
+    <!--Java script calling tag  -->
+{% endblock %}

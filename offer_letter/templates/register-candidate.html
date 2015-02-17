@@ -1,0 +1,95 @@
+{% extends "base1.html" %}
+{% load staticfiles %}
+{% block offer %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!--Form tag start here-->
+<form method="post" action="." role="form">{% csrf_token %}
+        <!--contener start here-->
+        <div class="container">
+            <div class="col-md-11">
+             <!--Main panel Start here-->
+                <div class="panel panel-default">
+                    <div class="panel-heading"><span class="glyphicon glyphicon-hand-right"></span> Human Resource
+                </div>
+                                 <!-- panel body start here-->
+                                <div class="panel-body">
+
+                                        <div class="col-md-3">
+                                    <ul class="nav nav-pills nav-stacked">
+
+                                      <li><a href="#" ><span class="glyphicon glyphicon-import">
+                                      </span> Create account</a></li>
+
+                                    </ul>
+                                        </div>
+
+                                    <div class="col-md-4 col-md-offset-1" >
+                                          <!--inside panel second panel Start here-->
+                                            <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title text-left">Employee Account</h3>
+                            </div>
+                        <!--pannel body start here-->
+                            <div class="panel-body">
+
+                                 {% for hidden in form.hidden_fields %}
+                                {{ hidden }}
+                            {% endfor %}
+
+                                    <div class="form-group">
+                                        <input class="form-control"  id="id_username" maxlength="30" name="username"
+                                               type="text"  placeholder="User Name" required autofocus=""/>
+                                    </div>
+
+                                    <div class="form-group" >
+                                        <input class="form-control" id="id_email" name="email" type="email"
+                                               placeholder="Email Id" required autofocus=""/>
+                                    </div>
+
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input class="form-control" id="id_password1" name="password1"
+                                                       type="password" placeholder="Password" required autofocus=""/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input class="form-control" id="id_password2" name="password2"
+                                                       type="password" placeholder="Conform Password" required autofocus=""/>
+                                            </div>
+                                        </div>
+
+                                        <p class="text-center">
+                                    <button type="submit" class="btn btn-success">Create Account</button>
+                                            </p>
+                                    {% for field in form.visible_fields %}
+                                        <div id="{{ field.auto_id }}_errors" class="errorlist">
+                                                    {{ field.errors }}
+
+                                                  </div>
+                                {{ field.help_text }}
+                            {% endfor %}
+
+                            </div>
+                        <!--pannel body end here-->
+                        </div>
+                                            <!--inside panel second panel end here-->
+                                         </div>
+
+                            </div>
+                                <!-- panel body end here-->
+                                </div>
+            <!-- panel Start here-->
+                </div>
+        </div>
+
+
+</form>
+    <!--jquery starts here-->
+
+
+
+
+
+ {% endblock %}

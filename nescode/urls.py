@@ -11,6 +11,8 @@ from login.views import *
 import login.views
 import offer_letter.views
 import offer_letter.emp_view
+import  offer_letter.nonemp_view
+
 
 
 
@@ -35,7 +37,8 @@ if settings.DEBUG:
                            name='employee-edit', ),
                        url(r'^delete/(?P<pk>\d+)/$', offer_letter.views.DeleteEmployeeView.as_view(),
                            name='employee-delete', ),
-                       url(r'^employee_details/(?P<pk>\d+)/$', offer_letter.views.EmployeeView.as_view(),name='employee-view', ),
+                       url(r'^candidate_details/(?P<pk>\d+)/$', offer_letter.views.EmployeeView.as_view(),
+                           name='employee-view', ),
                        url(r"^(?P<pk>\d+)/offer_letter/$", offer_letter.views.offerletter.as_view(), name='get-offer',),
                             # Below is login module url like registration login logout etc.
                        #url(r'^$', index),
@@ -65,6 +68,18 @@ if settings.DEBUG:
                       url(r'create-employee/success/$',offer_letter.views.employee_success,name='empployee_success', ),
                       url(r'^profile/$', 'offer_letter.emp_view.profile', name='profile'),
 
-                      url(r'^edit1111/(?P<pk>\d+)/$', offer_letter.emp_view.UpdateEmployeeView.as_view(),
+                      url(r'^employee/(?P<pk>\d+)/$', offer_letter.emp_view.UpdateEmployeeView.as_view(),
                            name='employee-edit1', ),
+                       #for non system user
+                      url(r'^new-emp/$', offer_letter.nonemp_view.CreateEmployeeView.as_view(),
+                           name='employee-new2', ),
+                      url(r'^emp-list/$', offer_letter.nonemp_view.ListContactView.as_view(),name='employee-list2', ),
+                      url(r'^emp-details/(?P<pk>\d+)/$', offer_letter.nonemp_view.EmployeeView.as_view(),
+                          name='employee-view2', ),
+                      url(r'^add-emp/(?P<pk>\d+)/$', offer_letter.nonemp_view.UpdateEmployeeView.as_view(),
+                           name='employee-edit2', ),
+                      url(r'^delete-emp/(?P<pk>\d+)/$', offer_letter.nonemp_view.DeleteEmployeeView.as_view(),
+                           name='employee-delete2', ),
+                      url(r'^candidate-to-emp/$', offer_letter.nonemp_view.CreateEmployeeView1.as_view(),
+                           name='employee-new3', ),
         ) + staticfiles_urlpatterns() + urlpatterns  # NOQA

@@ -1,0 +1,9 @@
+{% extends "base1.html" %}
+{% load staticfiles %}
+{% block offer %}
+<form action="." method="POST" role="form">{% csrf_token %}
+{{form.as_ul}}
+ <button type="submit" class="btn btn-primary btn-xs" id="save_contact" >Save</button>
+                <a href="/list" class="btn btn-default btn-xs">Back</a>
+</form>
+{% endblock %}

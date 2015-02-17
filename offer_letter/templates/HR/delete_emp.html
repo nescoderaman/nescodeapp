@@ -1,0 +1,52 @@
+{% extends "base1.html" %}
+{% load staticfiles %}
+{% block offer %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!--container start here-->
+<div class="container">
+  <div class="col-md-11">
+     <!--Main panel Start here-->
+            <div class="panel panel-default">
+                <div class="panel-heading"><span class="glyphicon glyphicon-hand-right"></span> Human Resource
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-2">
+                            <ul class="nav nav-pills nav-stacked">
+
+                              <li class="active"><a href="#"><span class="glyphicon glyphicon-user">
+
+                              </span> Employee</a></li>
+
+                            </ul>
+                     </div>
+    <div class="col-md-10">
+        <!--panel start here-->
+		<div class="panel panel-default">
+            <div class="panel-heading"><span class="glyphicon glyphicon-user"></span> Are you sure to delete this
+                Employee
+            </div>
+
+                        <div class="panel-body">
+                            <!-- panel body start here -->
+                            <div class="col-sm-6">
+                                <h4>Delete Employee  {{ emp.offer1 }}  ?</h4>
+                                        <form action="{% url "employee-delete2" pk=emp.id %}" method="POST">
+                                          {% csrf_token %}
+                                          <input type="submit" class="btn btn-danger btn-xs" value="Yes, delete." />
+                                          <a class="btn btn-default btn-xs" href=
+                                                  "{% url "employee-list2" %}">No, cancel.</a>
+                                        </form>
+                            </div>
+                            <!-- panel body end here -->
+                        </div>
+                    </div>
+                </div>
+                   </div>
+            </div>
+          </div>
+
+      </div>
+
+<!--container end here-->
+    <!--Java script calling tag  -->
+{% endblock %}
