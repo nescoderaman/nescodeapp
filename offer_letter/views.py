@@ -87,7 +87,7 @@ class DeleteEmployeeView(DeleteView):
         return super(DeleteEmployeeView, self).dispatch(*args, **kwargs)
 
     def get_success_url(self):
-        return reverse('hr_module')
+        return reverse('employee-list')
 
 
 #employee full details.

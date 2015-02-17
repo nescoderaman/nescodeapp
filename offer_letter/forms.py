@@ -68,11 +68,18 @@ class RegistrationForm(forms.Form):
         return self.cleaned_data
 
 
-
+#employee with system user form.
 from offer_letter.models import UserProfile
 from django.utils.translation import ugettext_lazy as _
 class employee_profile(forms.ModelForm):
-    first_name = forms.CharField(widget=forms.TextInput(attrs=dict(required=True, max_length=30,)),label=_(" First "
-                                                                                                           "Name :"))
+    doj = forms.CharField(widget=forms.TextInput(attrs=dict(required=True, max_length=30,)),label=_(" doj"))
     class Meta:
         model = UserProfile
+
+
+#employee without system user form
+from offer_letter.models import  emp
+class emp_profile(forms.ModelForm):
+    doj = forms.CharField(widget=forms.TextInput(attrs=dict(required=True, max_length=30,)),label=_(" doj"))
+    class Meta:
+        model = emp

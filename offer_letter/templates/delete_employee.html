@@ -10,23 +10,31 @@
                 <div class="panel-heading"><span class="glyphicon glyphicon-hand-right"></span> Human Resource
                 </div>
                 <div class="panel-body">
+                    <div class="col-md-2">
+                            <ul class="nav nav-pills nav-stacked">
 
-    <div class="col-md-9 col-md-offset-2">
+                              <li class="active"><a href="#"><span class="glyphicon glyphicon-user">
+
+                              </span> Candidate</a></li>
+
+                            </ul>
+                     </div>
+    <div class="col-md-10">
         <!--panel start here-->
 		<div class="panel panel-default">
             <div class="panel-heading"><span class="glyphicon glyphicon-user"></span> Are you sure to delete this
-                employee
+                Candidate
             </div>
 
                         <div class="panel-body">
                             <!-- panel body start here -->
                             <div class="col-sm-6">
-                                <h4>Delete Employee  {{ offer1 }}  ?</h4>
+                                <h4>Delete Candidate  {{ offer1 }}  ?</h4>
                                         <form action="{% url "employee-delete" pk=offer1.id %}" method="POST">
                                           {% csrf_token %}
                                           <input type="submit" class="btn btn-danger btn-xs" value="Yes, delete." />
                                           <a class="btn btn-default btn-xs" href=
-                                                  "{% url "hr_module" %}">No, cancel.</a>
+                                                  "{% url "employee-list" %}">No, cancel.</a>
                                         </form>
                             </div>
                             <!-- panel body end here -->

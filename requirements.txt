@@ -12,9 +12,10 @@ djangocms-admin-style==0.2.5
 djangocms-column==1.5
 djangocms-style==1.5
 djangocms-text-ckeditor==2.4.3
+gunicorn==0.13.4
 html5lib==0.999
+psycopg2==2.4.2
 reportlab==3.1.44
 six==1.9.0
 wsgiref==0.1.2
 xhtml2pdf==0.0.6
-

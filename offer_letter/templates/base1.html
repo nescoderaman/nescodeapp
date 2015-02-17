@@ -100,9 +100,10 @@
         </div>
              <div class="col-sm-9 col-sm-offset- col-md-10 col-md-offset-2 maincol-sm-9 col-sm-offset-3 col-md-10
              col-md-offset-1 main">
-                  {% if request.user.is_superuser %}
+                  {% if request.user.is_staff %}
             {% block offer %}
                 <!--template content goes here.-->
+
             {% endblock %}
                    {%else%}
    <div class="container">

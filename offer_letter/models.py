@@ -1,11 +1,11 @@
 from audioop import reverse
 from django.db import models
 
-
+#this model is for candidate profile.
 class offer1(models.Model):
     salutation = models.CharField(max_length=4,
                                   choices=(('Mr', 'Mr'),
-                                           ('Mrs', 'Mrs'),))
+                                           ('Mrs', 'Mrs'),),blank=True,null=True,default='Select')
     name = models.CharField(max_length=100)
     empid = models.CharField(max_length=100)
     doj = models.CharField(max_length=255,blank=True,null=True)
@@ -41,17 +41,13 @@ class ProfileImage(models.Model):
         return self.image
 
 
-#below mode for employee  details (Employee profile)
+#below model for employee  details (Employee profile)
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
 class UserProfile(models.Model):
+
     user = models.OneToOneField(User)
-    salutation = models.CharField(max_length=4,
-                                  choices=(('Mr', 'Mr'),
-                                           ('Mrs', 'Mrs'),))
-    first_name = models.CharField(max_length=100,blank=True, null=True,default='NA')
-    last_name = models.CharField(max_length=100,blank=True, null=True,default='NA')
     dob = models.CharField(max_length=100,blank=True, null=True,default='NA')
     presnal_email = models.CharField(max_length=100,blank=True, null=True,default='NA')
     mobile = models.CharField(max_length=100,blank=True, null=True,default='NA')
@@ -67,7 +63,17 @@ class UserProfile(models.Model):
     total_leave = models.CharField(max_length=100,blank=True, null=True,default='NA')
     total_exp = models.CharField(max_length=100,blank=True, null=True,default='NA')
     employment_type = models.CharField(max_length=100,blank=True, null=True,default='NA')
-
+    job_location  = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    Passport_Number = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    Date_of_Issue = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    Place_of_Issue = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    Marital_Status = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    Blood_Group = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    Relation = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    PAN_Number = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    Salary_Mode = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    Bank_Name = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    Bank_AC_No = models.CharField(max_length=100,blank=True, null=True,default='NA')
     def __str__(self):
           return "%s's profile" % self.user
 
@@ -83,4 +89,40 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 post_save.connect(create_user_profile, sender=User)
 
+
+
+#for employee who is not system user
+class emp(models.Model):
+    offer1 = models.ForeignKey(offer1)
+    dob = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    presnal_email = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    mobile = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    phone = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    alternet_no = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    company = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    doj = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    department = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    designation = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    home_address = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    local_address = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    ctc = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    total_leave = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    total_exp = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    employment_type = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    job_location  = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    Passport_Number = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    Date_of_Issue = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    Place_of_Issue = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    Marital_Status = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    Blood_Group = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    Relation = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    PAN_Number = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    Salary_Mode = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    Bank_Name = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    Bank_AC_No = models.CharField(max_length=100,blank=True, null=True,default='NA')
+    def __str__(self):
+        return self.offer1
+
+    def get_absolute_url(self):
+        return reverse('employee-view2', kwargs={'pk': self.id})
 

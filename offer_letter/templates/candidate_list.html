@@ -22,9 +22,12 @@
                                 <div class="col-sm-2">
                             <ul class="nav nav-pills nav-stacked">
 
-                              <li><a href="#"><span class="glyphicon glyphicon-transfer">
+                              <li class="active"><a href="#"><span class="glyphicon glyphicon-transfer">
 
                               </span> Recruitment</a></li>
+                                <li><a href="/emp-list"><span class="glyphicon glyphicon-user">
+
+                              </span> Employee</a></li>
 
                             </ul>
                                 </div>
@@ -43,7 +46,8 @@
                                               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Job Opening</a></li>
                                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url "employee-new" %}">Add Candidate</a></li>
-                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Candidate</a></li>
+                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="/candidate-to-emp">
+                                                    Make Employee</a></li>
                                               </ul>
                                             </div>
                                         </div>
@@ -51,7 +55,8 @@
            									</div>
 											<div class="panel-body">
 												<input type="text" class="form-control" id="task-table-filter" data-action="filter"
-													   data-filters="#task-table" placeholder="Search Employee By Name Or Employee Id" />
+													   data-filters="#task-table"
+                                                       placeholder="Search Candidate By Name Or Candidate Id" />
 
 											<table class="table table-hover" id="task-table">
 												<thead>
